@@ -23,12 +23,11 @@ trainer.train([
 # Next steps: Use WordNet to create more holistic list of synonyms.
 # The self-harm array uses data from Al-Mosaiwi and Johnstone (2018) on language unique to suicidal ideation.
 
-selfHarm_syn = set([
-	'hurt',
-	'pointless',
-	'overwhelmed',
-	'worthless',
-])
+selfHarm_syn = {'hurt', 'pointless', 'overwhelmed', 'worthless'}
+
+correctionsOfficer_syn = {'corrections', 'officer', 'parole'}
+
+stress_syn = {'anxiety', 'worried', 'calm', 'problem'}
 
 # work on Twilio Voice API
 
@@ -54,9 +53,9 @@ while True:
 	if request == 'OK' or request == 'ok':
 		print('Bot: bye')
 		break
-	if 'help' in request:
+	if 'CO' in request or request in correctionsOfficer_syn:
 		print('Bot: Do you want to talk to your corrections officer.')
-	if 'breath' in request:
+	if 'breath' in request or request in stress_syn:
 		print('Bot: Breath in for 4 seconds, hold, breath out.')
 	if 'suicide' in request or request in selfHarm_syn:
 		print('Would you like me to call the National Suicide Hotline?')
