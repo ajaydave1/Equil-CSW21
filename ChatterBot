@@ -1,0 +1,65 @@
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
+
+bot = ChatBot('Bot')
+
+trainer = ListTrainer(bot)
+
+trainer.train([
+	'Hi',
+	'Hello',
+	'I''m upset''',
+	'I''m worried',
+	'Please connect me to my corrections officer',
+	'Please help me calm down',
+	'Can you contact my corrections officer?',
+	'I need my social worker',
+	'Box breathing'
+	'Ok Thanks',
+	'No Problem! Have a Good Day!'
+])
+
+
+# Next steps: Use WordNet to create more holistic list of synonyms.
+# The self-harm array uses data from Al-Mosaiwi and Johnstone (2018) on language unique to suicidal ideation.
+
+selfHarm_syn = set([
+	'hurt',
+	'pointless',
+	'overwhelmed',
+	'worthless',
+])
+
+# work on Twilio Voice API
+
+# Download the helper library from https://www.twilio.com/docs/python/install
+# import os
+# from twilio.rest import Client
+
+
+# Your Account Sid and Auth Token from twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+# account_sid = os.environ['TWILIO_ACCOUNT_SID']
+# auth_token = os.environ['TWILIO_AUTH_TOKEN']
+# client = Client(account_sid, auth_token)
+
+# call = client.calls.create(
+# url='http://demo.twilio.com/docs/voice.xml',
+# to='+15558675310',
+# from_='+15017122661')
+# print(call.sid)
+
+while True:
+	request = input('you :')
+	if request == 'OK' or request == 'ok':
+		print('Bot: bye')
+		break
+	if 'help' in request:
+		print('Bot: Do you want to talk to your corrections officer.')
+	if 'breath' in request:
+		print('Bot: Breath in for 4 seconds, hold, breath out.')
+	if 'suicide' in request or request in selfHarm_syn:
+		print('Would you like me to call the National Suicide Hotline?')
+	else:
+		response = bot.get_response(request)
+		print('Bot:', response)
