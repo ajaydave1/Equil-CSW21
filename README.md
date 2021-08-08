@@ -1,3 +1,4 @@
+# Winner of the "Mission Impossible: Most Ambitious Project" Award at Techstars' Chicago Startup Week ('21) 
 # ChatBot's code is divided into two files, 'ChatterBot' and 'Calendar'. 
 # The former contains my partial code for the chat bot itself, while the latter is just for the Google Calendar API. 
 # The use case is embedded in the linked pitch deck.
